@@ -1,13 +1,16 @@
-name: xyz
+name: XYZ
 main: GN\xyz\xyz
-version: 1.0.1
-api: [1.0.0]
+version: 2.0.0
+api: 5.0.0
 
 load: POSTWORLD
 author: Ghast Noob
-description:  Cho Phép Người Chơi Xem Tọa Độ Nơi Mình Đang Đứng
+description: Cho phép người chơi xem tọa độ và thế giới hiện tại
 commands:
- xyz:
-  description: Returns Player Coordinates
-  usage: "§a❖§cX§eY§dZ§a§a❖ Ghi /xyz Để Xem Tọa Độ Bạn Đang Đứng"
-  permission: xyz.command.xyz
+  xyz:
+    description: Returns the player's coordinates and world
+    usage: "§a❖§cX§eY§dZ§a§a❖ Ghi /xyz Để Xem Tọa Độ Bạn Đang Đứng"
+    permission: xyz.command.xyz
+permissions:
+  xyz.command.xyz:
+    default: true

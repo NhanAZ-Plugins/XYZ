@@ -1,53 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GN\xyz;
 
-use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
+use pocketmine\plugin\PluginBase;
 
-
-class xyz extends PluginBase {
-
-	public function onEnable(){
-	$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Bật");
-		return true;
+final class xyz extends PluginBase{
+	protected function onEnable() : void{
+		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Bật");
 	}
-	
 
-	public function onLoad(){
+	protected function onLoad() : void{
 		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đang Load");
 	}
-	
 
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-		switch($command->getName()){
-			case "xyz":
-				if($sender instanceof Player){
-					$playerX = $sender->getX();
-                	$playerY = $sender->getY();
-                	$playerZ = $sender->getZ();
+	protected function onDisable() : void{
+		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Tắt");
+	}
 
-                	$outX=round($playerX,1);
-                	$outY=round($playerY,1);
-                	$outZ=round($playerZ,1);
-
-                	$playerLevel = $sender->getLevel()->getName();
-
-                	$sender->sendMessage("§a❖§cX§eY§dZ§a❖ §cX:§b" . $outX . " §f| §eY:§b" . $outY . " §f| §dZ:§b" . $outZ . " §f| §aWorld:§b " . $playerLevel);
-					return true;
-				}
-
-				else{
-					$sender->sendMessage("§a❖§cX§eY§dZ§a❖§b Vui Lòng Sử Dụng Lệnh Trong Game");
-            }
+	/** @param list<string> $args */
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+		if(strtolower($command->getName()) !== "xyz"){
+			return false;
 		}
-	}    
 
-	
-    public function onDisable(){
-        $this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Tắt");
-        return true;
+		if(!$sender instanceof Player){
+			$sender->sendMessage("§a❖§cX§eY§dZ§a❖§b Vui Lòng Sử Dụng Lệnh Trong Game");
+			return true;
+		}
+
+		$position = $sender->getPosition();
+		$sender->sendMessage(CoordinateMessage::format(
+			$position->getX(),
+			$position->getY(),
+			$position->getZ(),
+			$sender->getWorld()->getFolderName()
+		));
+		return true;
 	}
 }

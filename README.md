@@ -1,9 +1,18 @@
 # XYZ
 
-XYZ is a legacy PocketMine-MP plugin snapshot that displays a player's coordinates and world name with the `/xyz` command. Its manifest declares plugin API 1.0.0 and credits Ghast Noob.
+XYZ displays a player's current coordinates and world name with `/xyz`.
 
-The implementation uses the historical `pocketmine\Player` class and `getLevel()` API. It has not been ported or tested on Axolotl-PM 5.x. The repository has no current Axolotl-PM 5 build, runtime test or stable release.
+## Compatibility
 
-The repository has no LICENSE file or documented grant to redistribute a modified build. The original source, Vietnamese messages and author credit remain unchanged. A modern port or release needs verified rights and a compatibility review.
+- Minimum Axolotl-PM API: `5.0.0`.
+- CI checks PHPStan at maximum level and builds against exact API source revisions for `5.0.0` and `5.49.2`.
+- CI starts the built PHAR on Axolotl-PM `5.49.2`.
+- These are the verified compatibility points; compatibility with intermediate API 5 releases is not inferred.
 
-See [plugin.yml](plugin.yml) for the command declaration and [the historical source](src/GN/xyz/xyz.php) for its implementation.
+The command is available to players and replies with a short Vietnamese message when run from the console. Coordinates are rounded to one decimal place, and the displayed world is its folder name.
+
+## Build
+
+GitHub Actions uses [DevTools](https://github.com/NhanAZ/DevTools) to run PHPStan at maximum level, build the plugin PHAR and validate its contents. Build inputs are pinned to exact source revisions or checksums for reproducibility.
+
+The manifest credits Ghast Noob. The repository has no `LICENSE` file; no license was added or changed as part of this port.
