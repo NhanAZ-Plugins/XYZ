@@ -20,4 +20,9 @@ The command is available to players and replies with a short Vietnamese message 
 
 GitHub Actions uses [DevTools](https://github.com/NhanAZ/DevTools) to run PHPStan at maximum level, build the plugin PHAR and validate its contents. Build inputs are pinned to exact source revisions or checksums for reproducibility.
 
-The manifest credits Ghast Noob. The repository has no `LICENSE` file; no license was added or changed as part of this port.
+The manifest credits NhanAZ. The repository has no `LICENSE` file; no license was added or changed as part of this port.
+
+
+## Credits
+
+Authors: NhanAZ.
