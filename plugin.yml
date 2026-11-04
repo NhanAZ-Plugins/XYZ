@@ -4,7 +4,7 @@ version: 2.0.0
 api: 5.0.0
 
 load: POSTWORLD
-author: Ghast Noob
+author: NhanAZ
 description: Cho phép người chơi xem tọa độ và thế giới hiện tại
 commands:
   xyz:
