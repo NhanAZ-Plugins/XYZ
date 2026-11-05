@@ -11,15 +11,15 @@ use pocketmine\plugin\PluginBase;
 
 final class xyz extends PluginBase{
 	protected function onEnable() : void{
-		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Bật");
+		$this->getLogger()->info("XYZ enabled.");
 	}
 
 	protected function onLoad() : void{
-		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đang Load");
+		$this->getLogger()->info("XYZ loading.");
 	}
 
 	protected function onDisable() : void{
-		$this->getLogger()->info("§a❖§cX§eY§dZ§a❖ XYZ Đã Tắt");
+		$this->getLogger()->info("XYZ disabled.");
 	}
 
 	/** @param list<string> $args */
@@ -29,7 +29,7 @@ final class xyz extends PluginBase{
 		}
 
 		if(!$sender instanceof Player){
-			$sender->sendMessage("§a❖§cX§eY§dZ§a❖§b Vui Lòng Sử Dụng Lệnh Trong Game");
+			$sender->sendMessage("§cThis command can only be used in-game.");
 			return true;
 		}
 
